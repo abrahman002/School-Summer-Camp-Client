@@ -1,10 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2'
+
 
 const Login = () => {
     const { logIn } = useContext(AuthContext);
+    const location = useLocation();
+    const Navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -27,10 +33,15 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 })
-                navigate(from, { replace: true })
+                Navigate(from, { replace: true })
             })
             .catch(error => {
-                console.log(error.message)
+                Swal.fire({
+                    title: error.message,
+                    text: 'Do you want to continue',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
             })
 
     }
