@@ -12,8 +12,8 @@ const NavBar = () => {
         <li><Link>Home</Link></li>
     </>
     return (
-        <div>
-            <div className="navbar bg-white shadow-md  p-5 ">
+        <div >
+            <div className="navbar bg-white shadow-lg  p-5 ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
