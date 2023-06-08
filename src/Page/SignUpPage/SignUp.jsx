@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
-import { Helmet } from 'react-helmet-async';
+// import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
@@ -48,15 +48,15 @@ const SignUp = () => {
     }
     return (
         <div>
-            <Helmet>
+            {/* <Helmet>
                 <title>Bistro Boss | Signup</title>
-            </Helmet>
-            <div className="hero min-h-screen bg-base-200" >
-                <div className="hero-content flex-col lg:flex-row-reverse">
+            </Helmet> */}
+            <div className="hero min-h-screen bg-white" >
+                <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center w-1/2 lg:text-left">
-                        <img src={loginImg} alt="" />
+                        <img src='https://img.freepik.com/free-vector/sign-up-concept-illustration_114360-7875.jpg?size=626&ext=jpg&ga=GA1.1.1790188860.1684506131&semt=country_rows_v1' alt="" />
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} className="card  w-1/2 max-w-sm shadow bg-base-100">
+                    <form onSubmit={handleSubmit(onSubmit)} className="card  w-1/2 max-w-sm  bg-base-100">
                         <h1 className="text-3xl text-center mt-2 font-bold">SignUp now!</h1>
                         <div className="card-body">
                             <div className="form-control">

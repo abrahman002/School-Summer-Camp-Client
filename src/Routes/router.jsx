@@ -23,7 +23,7 @@ import SignUp from '../Page/SignUpPage/SignUp';
           element:<Login></Login>
         },
         {
-          path:'signup',
+          path:'/signup',
           element:<SignUp></SignUp>
         }
       ]

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+// import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2'
 
@@ -48,30 +48,30 @@ const Login = () => {
 
     return (
         <div>
-            <Helmet>
+            {/* <Helmet>
                 <title>Bistro Boss | Login</title>
-            </Helmet>
-            <div className="hero min-h-screen bg-base-200" >
+            </Helmet> */}
+            <div className="hero min-h-screen bg-white" >
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center w-1/2 lg:text-left">
-                        <img src={loginImg} alt="" />
+                        <img src='https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg?size=626&ext=jpg&ga=GA1.2.1790188860.1684506131&semt=country_rows_v1' alt="" />
                     </div>
-                    <form onSubmit={handleSubmit} className="card   w-1/2 max-w-sm shadow bg-base-100">
+                    <form onSubmit={handleSubmit} className="card   w-1/2 max-w-sm shadow bg-sky-600 text-white">
                         <h1 className="text-3xl text-center mt-2 font-bold">Login now!</h1>
-                        <div className="card-body">
+                        <div className="card-body " >
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text text-white">Email</span>
                                 </label>
                                 <input type="email" name='email' placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text text-white">Password</span>
                                 </label>
                                 <input type="password" name='password' placeholder="password" className="input input-bordered" />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <a href="#" className="label-text-alt link link-hover text-white">Forgot password?</a>
                                 </label>
                             </div>
 
