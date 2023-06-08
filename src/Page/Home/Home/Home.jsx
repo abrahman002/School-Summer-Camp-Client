@@ -3,6 +3,7 @@ import Slider from '../Slider/Slider';
 import PopulerClass from '../PopulerClass/PopulerClass';
 import Instractor from '../PopularInstrctor/Instractor';
 import Counter from '../CounterSection/Counter';
+import Blog from '../BlogSection/Blog';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <PopulerClass></PopulerClass>
             <Instractor></Instractor>
             <Counter></Counter>
+            <Blog></Blog>
         </div>
     );
 };
