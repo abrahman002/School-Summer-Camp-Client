@@ -33,7 +33,7 @@ const AuthProvider = ({children}) => {
 
     const profileUpdate=({name,photoUrl})=>{
         
-        updateProfile(auth.createUser,{displayName:name,photoURL:photoUrl});
+       return updateProfile(auth.createUser,{displayName:name,photoURL:photoUrl});
     }
 
 
