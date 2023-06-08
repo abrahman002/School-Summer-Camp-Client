@@ -15,8 +15,8 @@ const PopulerClass = () => {
     },[])
     return (
         <div>
-           <h1 className='text-3xl text-center font-semibold container mt-10 mb-10'>Popular Class Section</h1>
-          <div className='grid grid-cols-3 container mx-auto p-10'>
+           <h1 className='text-3xl text-center font-semibold container mt-10 '>Popular Class Section</h1>
+          <div className='grid md:grid-cols-3 container mx-auto md:p-10 p-5'>
           {
             popular.map(classCrad=><ClassCard
               key={classCrad._id}

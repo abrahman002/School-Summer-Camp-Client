@@ -5,7 +5,7 @@ const ClassCard = ({classCrad}) => {
     return (
         <div>
             <div className="card card-compact w-96 bg-base-100 shadow mt-5">
-                <figure><img src={image_url} alt="Shoes" /></figure>
+                <figure><img className='rounded w-full h-40' src={image_url} alt="Quran Memorization" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Name: {class_name}</h2>
                     <p>{class_info}</p>
