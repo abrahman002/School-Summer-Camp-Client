@@ -56,7 +56,7 @@ const Login = () => {
                     <div className="text-center w-1/2 lg:text-left">
                         <img src='https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg?size=626&ext=jpg&ga=GA1.2.1790188860.1684506131&semt=country_rows_v1' alt="" />
                     </div>
-                    <form onSubmit={handleSubmit} className="card   w-1/2 max-w-sm shadow bg-sky-600 text-white">
+                    <form onSubmit={handleSubmit} className="card   w-1/2 max-w-sm shadow bg-sky-600 ">
                         <h1 className="text-3xl text-center mt-2 font-bold">Login now!</h1>
                         <div className="card-body " >
                             <div className="form-control">
@@ -78,7 +78,7 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Login" />
                             </div>
-                            <label className="label">
+                            <label className="label text-white">
                                 <p><small>New Here?<Link to='/signup'>Create Account.</Link></small></p>
                             </label>
 
