@@ -2,9 +2,9 @@ import React from 'react';
 
 const ErrrorPage = () => {
     return (
-        // TODO
-        <div>
-            
+        
+        <div className='flex justify-center'>
+            <img style={{height:'500px'}} src="https://i.ibb.co/hR50GSN/5155999-2704891.jpg" alt="" />
         </div>
     );
 };

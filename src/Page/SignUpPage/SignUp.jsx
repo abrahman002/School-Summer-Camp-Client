@@ -7,53 +7,45 @@ import { AuthContext } from '../../AuthProvider/AuthProvider';
 import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
-    const { createUser, updatedUserProfile } = useContext(AuthContext);
+    const { createUser, profileUpdate } = useContext(AuthContext);
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    
+
 
     const onSubmit = data => {
-        console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                // updatedUserProfile(data.name, data.photoUrl)
-                //     .then(() => {
-                //         const savedUser = { name: data.name, email: data.email };
-                //         fetch('http://localhost:5000/users',{
-                //             method:"POST",
-                //             headers:{
-                //                 'content-type':'application/json'
-                //             },
-                //             body:JSON.stringify(savedUser)
-                //         })
-                //             .then(res => res.json())
-                //             .then(data => {
-                //                 if (data.insertedId) {
-                //                     reset();
-                //                     Swal.fire({
-                //                         position: 'top-end',
-                //                         icon: 'success',
-                //                         title: 'User created successfully.',
-                //                         showConfirmButton: false,
-                //                         timer: 1500
-                //                     });
-                //                     navigate('/');
-                //                 }
-                //             })
-                //     })
+                profileUpdate(data.name, data.photoUrl)
 
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'User created successfully.',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                navigate('/');
+                    .then(() => {
+                        const savedUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: "POST",
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(savedUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
+                    })
             })
             .catch(error => {
+                console.log(error)
                 Swal.fire({
                     title: `${error.message}`,
                     text: 'Do you want to continue',
@@ -66,7 +58,7 @@ const SignUp = () => {
 
 
 
-      
+
     return (
         <div>
             <Helmet>
@@ -105,7 +97,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input  type="password" {...register("password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} name='password' placeholder="password"  className="input input-bordered" />
+                                <input type="password" {...register("password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} name='password' placeholder="password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className='text-red-600'>Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be 6 character</p>}
                                 {errors.password?.type === 'pattern' && <p className='text-red-600'>Password must be one uppercase,one special  character</p>}
@@ -115,13 +107,13 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="password" {...register("confirm password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} name='confirm password'  placeholder="confirm password" className="input input-bordered" />
+                                <input type="password" {...register("confirm password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} name='confirm password' placeholder="confirm password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className='text-red-600'>Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be 6 character</p>}
                                 {errors.password?.type === 'pattern' && <p className='text-red-600'>Password must be one uppercase,one special  character</p>}
-                               
+
                             </div>
-                          
+
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Signup" />
                             </div>
