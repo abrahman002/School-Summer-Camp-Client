@@ -9,6 +9,9 @@ import Login from '../Page/LogInPage/Login';
 import SignUp from '../Page/SignUpPage/SignUp';
 import Instructor from '../Page/Instructor/Instructor';
 import Class from '../Page/Class/Class';
+import DeshBoard from '../Layout/DeshBoard';
+import MyCart from '../Page/DeshBoard/MyCart/MyCart';
+import AllUsers from '../Page/DeshBoard/AllUsers/AllUsers';
 
   const router = createBrowserRouter([
     {
@@ -38,6 +41,19 @@ import Class from '../Page/Class/Class';
         }
       ]
     },
+    {
+      path:'deshboard',
+      element:<DeshBoard></DeshBoard>,
+      children:[
+        {
+          path:'mycart',
+          element:<MyCart></MyCart>
+        },{
+          path:'alluser',
+          element:<AllUsers></AllUsers>
+        }
+      ]
+    }
   ]);
   
 
