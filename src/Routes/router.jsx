@@ -12,6 +12,7 @@ import Class from '../Page/Class/Class';
 import DeshBoard from '../Layout/DeshBoard';
 import MyCart from '../Page/DeshBoard/MyCart/MyCart';
 import AllUsers from '../Page/DeshBoard/AllUsers/AllUsers';
+import PrivetRoutes from './PrivetRoutes';
 
   const router = createBrowserRouter([
     {
@@ -43,7 +44,7 @@ import AllUsers from '../Page/DeshBoard/AllUsers/AllUsers';
     },
     {
       path:'deshboard',
-      element:<DeshBoard></DeshBoard>,
+      element:<PrivetRoutes><DeshBoard></DeshBoard></PrivetRoutes>,
       children:[
         {
           path:'mycart',

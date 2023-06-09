@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaTrashAlt, FaUserNurse, FaUserShield } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 const AllUsers = () => {
+    // const [isButtonDisabled, setButtonDisabled] = useState(false);
+
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/users')
@@ -28,6 +30,8 @@ const AllUsers = () => {
                 }
             })
 
+           
+
     }
     const handleMakeInstractor = (user) => {
         fetch(`http://localhost:5000/users/instractor/${user._id}`, {
@@ -46,6 +50,7 @@ const AllUsers = () => {
                     })
                 }
             })
+       
     }
     return (
         <div className='w-full'>
@@ -77,7 +82,7 @@ const AllUsers = () => {
                             }</td>
                             <td>
                                 {user.role === 'instractor' ? 'instractor' :
-                                    <button className='btn btn-ghost bg-red-500 text-white' onClick={() => handleMakeInstractor(user)}><FaUserNurse /></button>
+                                    <button className='btn btn-ghost bg-red-500 text-white'  onClick={() => handleMakeInstractor(user)}><FaUserNurse /></button>
                                 }
                             </td>
                         </tr>)}
