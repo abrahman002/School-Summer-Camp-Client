@@ -10,7 +10,8 @@ const PopulerClass = () => {
         .then(res=> res.json())
         .then(data =>{
             console.log(data)
-            setPopular(data)
+            const popularClass=data.filter(popularClass=>popularClass.category === 'popular');
+            setPopular(popularClass)
         })
     },[])
     return (

@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-// import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin';
 
 const SignUp = () => {
     const { createUser, updatedUserProfile } = useContext(AuthContext);
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    
 
     const onSubmit = data => {
         console.log(data);
@@ -52,14 +54,24 @@ const SignUp = () => {
                 navigate('/');
             })
             .catch(error => {
-                console.log(error.message);
+                Swal.fire({
+                    title: `${error.message}`,
+                    text: 'Do you want to continue',
+                    icon: 'error',
+                    confirmButtonText: 'Cool'
+                })
             })
     }
+
+
+
+
+      
     return (
         <div>
-            {/* <Helmet>
-                <title>Bistro Boss | Signup</title>
-            </Helmet> */}
+            <Helmet>
+                <title>Islamic School | Signup</title>
+            </Helmet>
             <div className="hero min-h-screen bg-white" >
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center w-1/2 lg:text-left">
@@ -93,7 +105,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" {...register("password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} name='password' placeholder="password" className="input input-bordered" />
+                                <input  type="password" {...register("password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} name='password' placeholder="password"  className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className='text-red-600'>Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be 6 character</p>}
                                 {errors.password?.type === 'pattern' && <p className='text-red-600'>Password must be one uppercase,one special  character</p>}
@@ -103,19 +115,21 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="password" {...register("confirm password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} name='confirm password' placeholder="confirm password" className="input input-bordered" />
+                                <input type="password" {...register("confirm password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} name='confirm password'  placeholder="confirm password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className='text-red-600'>Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be 6 character</p>}
                                 {errors.password?.type === 'pattern' && <p className='text-red-600'>Password must be one uppercase,one special  character</p>}
-
+                               
                             </div>
-
+                          
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="Signup" />
                             </div>
                             <label className="label">
                                 <p><small>Already Have Account?<Link to='/login'>Login</Link></small></p>
                             </label>
+                            <div className='divider'></div>
+                            <SocialLogin></SocialLogin>
 
                         </div>
 

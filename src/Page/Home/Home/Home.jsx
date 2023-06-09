@@ -4,10 +4,14 @@ import PopulerClass from '../PopulerClass/PopulerClass';
 import Instractor from '../PopularInstrctor/Instractor';
 import Counter from '../CounterSection/Counter';
 import Blog from '../BlogSection/Blog';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
         <div className='mt-20'>
+             <Helmet>
+                <title>Islamic School | Home</title>
+            </Helmet>
             <Slider></Slider>
             <PopulerClass></PopulerClass>
             <Instractor></Instractor>

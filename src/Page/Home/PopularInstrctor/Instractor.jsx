@@ -9,7 +9,8 @@ const Instractor = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                setInstractor(data);
+                const popularIntractor=data.filter(instractor=>instractor.category === 'popular');
+                setInstractor(popularIntractor);
             })
     }, [])
     return (
