@@ -13,6 +13,8 @@ import DeshBoard from '../Layout/DeshBoard';
 import MyCart from '../Page/DeshBoard/MyCart/MyCart';
 import AllUsers from '../Page/DeshBoard/AllUsers/AllUsers';
 import PrivetRoutes from './PrivetRoutes';
+import InstractorAddClass from '../Page/DeshBoard/instractorAddClass/InstractorAddClass';
+import InstractorClass from '../Page/DeshBoard/InstractorClass/InstractorClass';
 
   const router = createBrowserRouter([
     {
@@ -52,6 +54,13 @@ import PrivetRoutes from './PrivetRoutes';
         },{
           path:'alluser',
           element:<AllUsers></AllUsers>
+        },{
+          path:'instractoraddclass',
+          element:<InstractorAddClass></InstractorAddClass>
+        },
+        {
+          path:'instractorclass',
+          element:<InstractorClass></InstractorClass>
         }
       ]
     }

@@ -3,21 +3,24 @@ import React, { useContext, useState } from 'react';
 import { FaTrashAlt, FaUserNurse, FaUserShield } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import useAxiosSecure from '../../../hook/useAxiosSecure/useAxiosSecure';
 
 const AllUsers = () => {
     // const [isButtonDisabled, setButtonDisabled] = useState(false);
-    const {user}=useContext(AuthContext)
+    const {user,loading}=useContext(AuthContext)
+    const[axiosSecure]=useAxiosSecure()
 
     const token=localStorage.getItem('access-token')
 
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch(`http://localhost:5000/users?email=${user?.email}`,{
+        
+        const res = await axiosSecure.get(`/users?email=${user?.email}`,{
             headers:{
                 authorization:`bearer ${token}`
             }
         })
-        return res.json()
+        return res.data;
     })
 
     const handleMakeAdmin = user => {
@@ -62,7 +65,7 @@ const AllUsers = () => {
     }
     return (
         <div className='w-full'>
-            <h1 className='text-3xl font-bold '>All User : {users.length}</h1>
+            <h1 className='text-3xl font-bold text-center'>All User : {users.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
@@ -76,7 +79,7 @@ const AllUsers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users?.map((user, index) => <tr
+                        {users.map((user, index) => <tr
                             key={user._id}
                         >
                             <th>{index + 1}</th>

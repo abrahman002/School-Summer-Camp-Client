@@ -19,7 +19,7 @@ const NavBar = () => {
         <li><Link to='/instructor'>Instructors</Link></li>
         <li><Link to='/class'>Classes</Link></li>
         {auth.currentUser ? <>
-            <li><Link to="/deshboard/mycart">Dashboard </Link></li>
+            <li><Link to="/deshboard">Dashboard </Link></li>
             <li><Link onClick={handleLogOut}>LogOut</Link></li>
            
         </> :
