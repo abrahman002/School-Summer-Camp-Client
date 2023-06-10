@@ -1,14 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaTrashAlt, FaUserNurse, FaUserShield } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const AllUsers = () => {
     // const [isButtonDisabled, setButtonDisabled] = useState(false);
+    const {user}=useContext(AuthContext)
+
+    const token=localStorage.getItem('access-token')
 
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
+        const res = await fetch(`http://localhost:5000/users?email=${user?.email}`,{
+            headers:{
+                authorization:`bearer ${token}`
+            }
+        })
         return res.json()
     })
 
@@ -68,7 +76,7 @@ const AllUsers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user, index) => <tr
+                        {users?.map((user, index) => <tr
                             key={user._id}
                         >
                             <th>{index + 1}</th>
