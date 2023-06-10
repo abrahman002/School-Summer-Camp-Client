@@ -6,7 +6,7 @@ const PopulerClass = () => {
     
     
     useEffect(()=>{
-        fetch('http://localhost:5000/popularclass')
+        fetch('http://localhost:5000/intractoraddclass')
         .then(res=> res.json())
         .then(data =>{
             console.log(data)

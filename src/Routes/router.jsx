@@ -10,11 +10,13 @@ import SignUp from '../Page/SignUpPage/SignUp';
 import Instructor from '../Page/Instructor/Instructor';
 import Class from '../Page/Class/Class';
 import DeshBoard from '../Layout/DeshBoard';
-import MyCart from '../Page/DeshBoard/MyCart/MyCart';
+
 import AllUsers from '../Page/DeshBoard/AllUsers/AllUsers';
 import PrivetRoutes from './PrivetRoutes';
 import InstractorAddClass from '../Page/DeshBoard/instractorAddClass/InstractorAddClass';
 import InstractorClass from '../Page/DeshBoard/InstractorClass/InstractorClass';
+import Updated from '../Page/DeshBoard/InstractorClass/Updated';
+import MangeClass from '../Page/DeshBoard/MangeClass/MangeClass';
 
   const router = createBrowserRouter([
     {
@@ -48,10 +50,7 @@ import InstractorClass from '../Page/DeshBoard/InstractorClass/InstractorClass';
       path:'deshboard',
       element:<PrivetRoutes><DeshBoard></DeshBoard></PrivetRoutes>,
       children:[
-        {
-          path:'mycart',
-          element:<MyCart></MyCart>
-        },{
+       {
           path:'alluser',
           element:<AllUsers></AllUsers>
         },{
@@ -61,6 +60,14 @@ import InstractorClass from '../Page/DeshBoard/InstractorClass/InstractorClass';
         {
           path:'instractorclass',
           element:<InstractorClass></InstractorClass>
+        },
+        {
+          path:'update/:id',
+          element:<Updated></Updated>
+        },
+        {
+          path:'mangeclass',
+          element:<MangeClass></MangeClass>
         }
       ]
     }

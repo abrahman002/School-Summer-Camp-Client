@@ -13,8 +13,9 @@ const InstractorAddClass = () => {
         const classImage=form.image.value;
         const classSeats=form.seats.value;
         const classPrice=form.price.value;
+        const status='pending'
         const UpdateClass={
-            className,classImage,classSeats,classPrice
+            className,classImage,classSeats,classPrice,status
         }
 
         console.log(UpdateClass)
