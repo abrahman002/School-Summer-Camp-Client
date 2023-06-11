@@ -14,7 +14,7 @@ const ClassCard = ({ classCrad }) => {
     const handleAddClass = classCrad => {
         console.log(classCrad)
         if (user && user.email) {
-            const classItem = { classId: _id, className, classImage,  email: user.email }
+            const classItem = { classId: _id, className, classImage,classPrice,  email: user.email }
             fetch('http://localhost:5000/addclass', {
                 method: 'POST',
                 headers: {

@@ -17,6 +17,8 @@ import InstractorAddClass from '../Page/DeshBoard/instractorAddClass/InstractorA
 import InstractorClass from '../Page/DeshBoard/InstractorClass/InstractorClass';
 import Updated from '../Page/DeshBoard/InstractorClass/Updated';
 import MangeClass from '../Page/DeshBoard/MangeClass/MangeClass';
+import StudentSeletClass from '../Page/DeshBoard/StudentSeletClass/StudentSeletClass';
+import Payment from '../Page/DeshBoard/Payment/Payment';
 
   const router = createBrowserRouter([
     {
@@ -68,6 +70,14 @@ import MangeClass from '../Page/DeshBoard/MangeClass/MangeClass';
         {
           path:'mangeclass',
           element:<MangeClass></MangeClass>
+        },
+        {
+          path:'studentselectclass',
+          element:<StudentSeletClass></StudentSeletClass>
+        },
+        {
+          path:'payment',
+          element:<Payment></Payment>
         }
       ]
     }

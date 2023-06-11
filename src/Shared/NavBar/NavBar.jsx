@@ -1,9 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import DarkModeToggle from "react-dark-mode-toggle";
+import './thame.css'
 
 const NavBar = () => {
-    const { auth ,logOut} = useContext(AuthContext);
+    const { auth, logOut } = useContext(AuthContext);
+    const [isDarkMode, setIsDarkMode] = useState(() => false);
+
+    useEffect(() => {
+        const root = window.document.documentElement;
+        if (isDarkMode) {
+            root.classList.add('dark');
+        } else {
+            root.classList.remove('dark');
+        }
+    }, [isDarkMode]);
 
     const handleLogOut = () => {
         logOut()
@@ -13,6 +25,7 @@ const NavBar = () => {
             .catch(error => { error })
     }
 
+
     const NavMenu = <>
 
         <li><Link to='/'>Home</Link></li>
@@ -21,13 +34,18 @@ const NavBar = () => {
         {auth.currentUser ? <>
             <li><Link to="/deshboard">Dashboard </Link></li>
             <li><Link onClick={handleLogOut}>LogOut</Link></li>
-           
+
         </> :
             <li><Link to='login'>Login</Link></li>}
+
     </>
+
+    const toggleTheme = () => {
+        setIsDarkMode(prevMode => !prevMode);
+    };
     return (
         <div >
-            <div className="navbar bg-white shadow-lg fixed top-0 z-10 p-5 ">
+            <div className={`navbar bg-white shadow-lg fixed top-0 z-10 p-5 ${isDarkMode ? 'dark' : 'light'}`} >
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -54,6 +72,17 @@ const NavBar = () => {
                         </label>
                     }
                 </div>
+                <div>
+                    <DarkModeToggle
+                        onChange={toggleTheme}
+                        checked={isDarkMode}
+                        size={80}
+                    />
+                </div>
+
+            </div>
+            <div className={`content ${isDarkMode ? 'dark' : 'light'}`}>
+                {/* The rest of your web page content */}
             </div>
         </div>
     );

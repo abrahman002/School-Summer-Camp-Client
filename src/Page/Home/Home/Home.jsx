@@ -15,6 +15,7 @@ const Home = () => {
             <Slider></Slider>
             <PopulerClass></PopulerClass>
             <Instractor></Instractor>
+         
             <Counter></Counter>
             <Blog></Blog>
         </div>

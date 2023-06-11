@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 const InstractorClass = () => {
     const [instractorClass, setInstractorClass] = useState([]);
 
+
+
     useEffect(() => {
         fetch('http://localhost:5000/intractoraddclass')
             .then(res => res.json())
@@ -12,6 +14,9 @@ const InstractorClass = () => {
                 setInstractorClass(data);
             })
     }, [])
+
+
+
 
 
     return (
@@ -31,16 +36,20 @@ const InstractorClass = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {instractorClass.map((table,index) => <tr key={table._id}>
-                            <th>{index +1}</th>
+                        {instractorClass.map((table, index) => <tr key={table._id}>
+                            <th>{index + 1}</th>
                             <td>{table.className}</td>
                             <td>{table.enrolled}</td>
                             <td>{table.status}</td>
+                            <td>{table.feedback ? (
+                                <Link to={`/feedback/${table._id}`}>
+                                    View Feedback
+                                </Link>
+                            ) : (
+                                'No Feedback'
+                            )}</td>
                             <td>
-                                {table.feedback}
-                            </td>
-                            <td>
-                            <Link to={`/update/${table._id}`}  ><button className='btn btn-primary '>Update</button></Link>
+                                <Link to={`/deshboard/update/${table._id}`}  ><button className='btn btn-primary '>Update</button></Link>
                             </td>
                         </tr>)}
 

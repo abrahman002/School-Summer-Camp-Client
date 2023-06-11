@@ -5,6 +5,7 @@ import { AuthContext } from '../../../AuthProvider/AuthProvider';
 const ManageClass = () => {
     const [instructorClasses, setInstructorClasses] = useState([]);
     const { user } = useContext(AuthContext);
+    const [feedbackText, setFeedbackText] = useState('');
 
     useEffect(() => {
         fetch('http://localhost:5000/intractoraddclass')
@@ -58,6 +59,26 @@ const ManageClass = () => {
             });
     };
 
+
+    const handleFeedbackSubmit = (classId, feedbackText) => {
+        fetch(`http://localhost:5000/classes/${classId}/feedback`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ feedbackText }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // Handle the response or perform any necessary actions
+                console.log('Feedback submitted successfully');
+            })
+            .catch((error) => {
+                console.error('Error submitting feedback:', error);
+            });
+    };
+
+
     return (
         <div>
             <div>
@@ -101,7 +122,7 @@ const ManageClass = () => {
                                                     onClick={() => handleApprove(instrctor._id)}
                                                     disabled={instrctor.status !== 'pending'}
                                                 >
-                                                    Approve 
+                                                    Approve
                                                 </button> <br />
                                                 <button className='btn btn-warning'
                                                     onClick={() => handleDeny(instrctor._id)}
@@ -112,6 +133,31 @@ const ManageClass = () => {
                                             </>
                                         )}
                                     </td>
+                                    <td>
+                                        <label htmlFor={`modal_${instrctor._id}`} className="btn btn-info w-20">Feedback</label>
+                                        <input type="checkbox" id={`modal_${instrctor._id}`} className="modal-toggle" />
+                                        <div className="modal">
+                                            <div className="modal-box">
+                                                <h3 className="font-bold text-lg">Feedback for {instrctor.className}</h3>
+                                                <textarea
+                                                    className="w-full px-4 py-2 border rounded"
+                                                    placeholder="Enter feedback"
+                                                    rows={4}
+                                                    onChange={(e) => setFeedbackText(e.target.value)}
+                                                ></textarea>
+                                                <div className="modal-action">
+                                                    <button
+                                                        className="btn btn-success"
+                                                        onClick={() => handleFeedbackSubmit(instrctor._id, feedbackText)}
+                                                    >
+                                                        Submit
+                                                    </button>
+                                                    <label htmlFor={`modal_${instrctor._id}`} className="btn">Close</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
                                 </tr>
                             ))}
                         </tbody>
@@ -123,4 +169,3 @@ const ManageClass = () => {
 };
 
 export default ManageClass;
-

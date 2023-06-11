@@ -53,6 +53,16 @@ const SignUp = () => {
                     confirmButtonText: 'Cool'
                 })
             })
+
+        if (data.password !== data.confirmPassword) {
+            Swal.fire({
+                title: "Password does not match",
+                text: "Please make sure the passwords match.",
+                icon: "error",
+                confirmButtonText: "OK"
+            });
+            return;
+        }
     }
 
 
@@ -107,11 +117,31 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="password" {...register("confirm password", { required: true, minLength: 6, pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/ })} name='confirm password' placeholder="confirm password" className="input input-bordered" />
-                                {errors.password?.type === 'required' && <p className='text-red-600'>Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be 6 character</p>}
-                                {errors.password?.type === 'pattern' && <p className='text-red-600'>Password must be one uppercase,one special  character</p>}
-
+                                <input
+                                    type="password"
+                                    {...register("confirmPassword", {
+                                        required: true,
+                                        minLength: 6,
+                                        pattern: /(?=.*?[A-Z])(?=.*?[#?!@$%^&*-])/
+                                    })}
+                                    name="confirmPassword"
+                                    placeholder="confirm password"
+                                    className="input input-bordered"
+                                />
+                                {errors.confirmPassword?.type === "required" && (
+                                    <p className="text-red-600">Confirm Password is required</p>
+                                )}
+                                {errors.confirmPassword?.type === "minLength" && (
+                                    <p className="text-red-600">Confirm Password must be 6 characters</p>
+                                )}
+                                {errors.confirmPassword?.type === "pattern" && (
+                                    <p className="text-red-600">
+                                        Confirm Password must have one uppercase letter and one special character
+                                    </p>
+                                )}
+                                {errors.confirmPassword?.type === "validate" && (
+                                    <p className="text-red-600">Passwords do not match</p>
+                                )}
                             </div>
 
                             <div className="form-control mt-6">

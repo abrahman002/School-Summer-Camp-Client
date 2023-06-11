@@ -33,9 +33,10 @@ const DeshBoard = () => {
 
                             </> :
                                 <>
-                                    <li><NavLink to='/'><FaHome />  Home</NavLink></li>
-                                    <li><NavLink> <FaHome />My Selet Classes</NavLink></li>
-                                    <li><NavLink to='/deshboard/mycart'><FaBookmark />My Enroll Class</NavLink></li>
+                                    
+                                    <li><NavLink to='/deshboard/studentselectclass'> <FaHome />My Selet Classes</NavLink></li>
+                                    <li><NavLink to='/deshboard/studentenrollclass'><FaBookmark />My Enroll Class</NavLink></li>
+                                    <li><NavLink to='/deshboard/paymenthistory'><FaBookmark />payment history</NavLink></li>
                                 </>
 
                         }
