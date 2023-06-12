@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 const Instructor = () => {
 
     const { data: instractors = [], refetch } = useQuery(['instructor'], async () => {
-        const res = await fetch('http://localhost:5000/instructor');
+        const res = await fetch('https://islamic-school-server.vercel.app/instructor');
 
         return res.json();
 

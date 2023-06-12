@@ -24,7 +24,7 @@ const AllUsers = () => {
     })
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://islamic-school-server.vercel.app/users/admin/${user._id}`, {
             method: "PATCH",
         })
             .then(res => res.json())
@@ -45,7 +45,7 @@ const AllUsers = () => {
 
     }
     const handleMakeInstractor = (user) => {
-        fetch(`http://localhost:5000/users/instractor/${user._id}`, {
+        fetch(`https://islamic-school-server.vercel.app/users/instractor/${user._id}`, {
             method: "PATCH",
         })
             .then(res => res.json())

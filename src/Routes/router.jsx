@@ -68,7 +68,7 @@ import PaymentHistory from '../Page/DeshBoard/PaymentHistory/PaymentHistory';
         {
           path:'update/:id',
           element:<Updated></Updated>,
-          loader:({params})=>fetch(`http://localhost:5000/intractoraddclass/${params.id}`)
+          
         },
         {
           path:'mangeclass',

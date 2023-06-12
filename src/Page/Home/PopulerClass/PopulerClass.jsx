@@ -7,7 +7,7 @@ const PopulerClass = () => {
     
     
     useEffect(()=>{
-        fetch('http://localhost:5000/intractoraddclass')
+        fetch('https://islamic-school-server.vercel.app/intractoraddclass')
         .then(res=> res.json())
         .then(data =>{
             console.log(data)

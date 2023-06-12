@@ -10,7 +10,7 @@ const UseCart = () => {
     const { refetch, data: cart = [] } = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/addclass?email=${user?.email}`)
+            const res = await fetch(`https://islamic-school-server.vercel.app/addclass?email=${user?.email}`)
             return res.json();
         },
     })

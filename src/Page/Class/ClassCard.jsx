@@ -16,7 +16,7 @@ const ClassCard = ({ card }) => {
         if (user && user.email) {
             const classItem = { card: _id, className, classImage,classPrice,  email: user.email }
             console.log(classItem)
-            fetch('http://localhost:5000/addclass', {
+            fetch('https://islamic-school-server.vercel.app/addclass', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

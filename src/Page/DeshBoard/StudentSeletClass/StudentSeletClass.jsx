@@ -6,7 +6,7 @@ const StudentSeletClass = () => {
     const [seletClass, setSeletClass] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/addclass')
+        fetch('https://islamic-school-server.vercel.app/addclass')
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -17,7 +17,7 @@ const StudentSeletClass = () => {
     const handleDelete = (id) => {
         const procced = confirm('are you sure delete this item');
         if (procced) {
-            fetch(`http://localhost:5000/addclass/${id}`, {
+            fetch(`https://islamic-school-server.vercel.app/addclass/${id}`, {
                 method: 'DELETE',
             })
                 .then(res => res.json())

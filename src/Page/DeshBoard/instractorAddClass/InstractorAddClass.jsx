@@ -20,7 +20,7 @@ const InstractorAddClass = () => {
 
         console.log(UpdateClass)
 
-        fetch('http://localhost:5000/intractoraddclass',{
+        fetch('https://islamic-school-server.vercel.app/intractoraddclass',{
             method:"POST",
             headers:{
                 'content-type':'application/json'

@@ -10,7 +10,7 @@ const UseInstractorClass = () => {
     const { refetch, data: cart = [] } = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/intractoraddclass?email=${user?.email}`)
+            const res = await fetch(`https://islamic-school-server.vercel.app/intractoraddclass?email=${user?.email}`)
             return res.json();
         },
     })

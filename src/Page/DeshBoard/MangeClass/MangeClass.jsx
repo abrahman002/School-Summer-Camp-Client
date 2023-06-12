@@ -8,7 +8,7 @@ const ManageClass = () => {
     const [feedbackText, setFeedbackText] = useState('');
 
     useEffect(() => {
-        fetch('http://localhost:5000/intractoraddclass')
+        fetch('https://islamic-school-server.vercel.app/intractoraddclass')
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
@@ -17,7 +17,7 @@ const ManageClass = () => {
     }, []);
 
     const handleApprove = (classId) => {
-        fetch(`http://localhost:5000/classes/${classId}`, {
+        fetch(`https://islamic-school-server.vercel.app/classes/${classId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const ManageClass = () => {
     };
 
     const handleDeny = (classId) => {
-        fetch(`http://localhost:5000/classes/${classId}`, {
+        fetch(`https://islamic-school-server.vercel.app/classes/${classId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ const ManageClass = () => {
 
 
     const handleFeedbackSubmit = (classId, feedbackText) => {
-        fetch(`http://localhost:5000/classes/${classId}/feedback`, {
+        fetch(`https://islamic-school-server.vercel.app/classes/${classId}/feedback`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
