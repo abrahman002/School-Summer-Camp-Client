@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import InstractorCard from './InstractorCard';
+import { Fade } from 'react-awesome-reveal';
 
 const Instractor = () => {
     const [instractors, setInstractor] = useState([]);
@@ -14,9 +15,10 @@ const Instractor = () => {
             })
     }, [])
     return (
+        <Fade>
         <div>
             
-            <h1 className='text-2xl text-center font-semibold mt-10'>Popular Instractor Section</h1> 
+            <h1 className='text-2xl text-center font-semibold mt-10 popular-tilte'>Popular Instractor Section</h1> 
          
             
                      
@@ -29,6 +31,7 @@ const Instractor = () => {
             }
          </div>
         </div>
+        </Fade>
     );
 };
 

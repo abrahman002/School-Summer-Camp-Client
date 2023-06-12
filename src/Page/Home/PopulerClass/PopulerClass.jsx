@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ClassCard from './ClassCard';
+import { Fade } from 'react-awesome-reveal';
 
 const PopulerClass = () => {
     const [popular,setPopular]=useState([]);
@@ -15,8 +16,9 @@ const PopulerClass = () => {
         })
     },[])
     return (
+      <Fade>
         <div>
-           <h1 className='text-3xl text-center font-semibold container mt-10 '>Popular Class Section</h1>
+           <h1 className='text-3xl text-center font-semibold container mt-10 popular-class'>Popular Class Section</h1>
           <div className='grid md:grid-cols-3 container mx-auto md:p-10 p-5'>
           {
             popular.map(classCrad=><ClassCard
@@ -27,6 +29,7 @@ const PopulerClass = () => {
            }
           </div>
         </div>
+        </Fade>
     );
 };
 

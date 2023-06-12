@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const StudentSeletClass = () => {
     const [seletClass, setSeletClass] = useState([]);
@@ -12,6 +13,31 @@ const StudentSeletClass = () => {
                 setSeletClass(data)
             })
     }, [])
+
+    const handleDelete = (id) => {
+        const procced = confirm('are you sure delete this item');
+        if (procced) {
+            fetch(`http://localhost:5000/addclass/${id}`, {
+                method: 'DELETE',
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Successfully item delete',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        const rimaining = seletClass.filter(SeletId => SeletId._id !== id);
+                        setSeletClass(rimaining);
+                    }
+                })
+        }
+    }
+
     return (
         <div>
             <h1 className='text-3xl text-center font-semibold'>My selet class</h1>
@@ -49,7 +75,7 @@ const StudentSeletClass = () => {
                                 </td>
                                 <td>{card.classPrice}</td>
                                 <th>
-                                    <button className="btn btn-warning btn-sm">Delete</button>
+                                <button className="btn btn-warning btn-sm" onClick={()=>handleDelete(card._id)}>Delete</button>
                                 </th>
                                 <th>
                                     <Link to='/deshboard/payment'><button className="btn btn-info btn-sm">Pay</button></Link>

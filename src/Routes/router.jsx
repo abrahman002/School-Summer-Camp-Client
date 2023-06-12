@@ -19,6 +19,8 @@ import Updated from '../Page/DeshBoard/InstractorClass/Updated';
 import MangeClass from '../Page/DeshBoard/MangeClass/MangeClass';
 import StudentSeletClass from '../Page/DeshBoard/StudentSeletClass/StudentSeletClass';
 import Payment from '../Page/DeshBoard/Payment/Payment';
+import StudentEnrollClass from '../Page/DeshBoard/StudentEnrollClass/StudentEnrollClass';
+import PaymentHistory from '../Page/DeshBoard/PaymentHistory/PaymentHistory';
 
   const router = createBrowserRouter([
     {
@@ -65,7 +67,8 @@ import Payment from '../Page/DeshBoard/Payment/Payment';
         },
         {
           path:'update/:id',
-          element:<Updated></Updated>
+          element:<Updated></Updated>,
+          loader:({params})=>fetch(`http://localhost:5000/intractoraddclass/${params.id}`)
         },
         {
           path:'mangeclass',
@@ -78,6 +81,13 @@ import Payment from '../Page/DeshBoard/Payment/Payment';
         {
           path:'payment',
           element:<Payment></Payment>
+        },{
+          path:'studentenrollclass',
+          element:<StudentEnrollClass></StudentEnrollClass>
+        },
+        {
+          path:'paymenthistory',
+          element:<PaymentHistory></PaymentHistory>
         }
       ]
     }

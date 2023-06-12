@@ -5,7 +5,7 @@ const Blog = () => {
     return (
         <>
             <Fade cascade damping={0.1}>
-                <h2 className='text-3xl text-center font-semibold mt-5'>Our Recent Blog Post</h2>
+                <h2 className='text-3xl text-center font-semibold mt-5 blog-title'>Our Recent Blog Post</h2>
             </Fade>
             <Fade>
                 <div className='grid md:grid-cols-3 gap-5 mt-10 mb-10 container mx-auto'>

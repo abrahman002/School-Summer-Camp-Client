@@ -1,6 +1,7 @@
 import React from 'react';
 import './counter.css';
 import CountUp, { useCountUp } from 'react-countup';
+import { Fade } from 'react-awesome-reveal';
 
 
 const Counter = () => {
@@ -11,6 +12,7 @@ const Counter = () => {
         scrollSpyDelay: 1000,
       });
     return (
+        <Fade>
         <div className='counter flex justify-evenly items-center '>
             <div className='md:text-3xl font-bold text-sm '>
             <h1>Free Student</h1>
@@ -42,6 +44,7 @@ const Counter = () => {
             />
             </div>
         </div>
+        </Fade>
     );
 };
 

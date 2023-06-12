@@ -6,51 +6,51 @@ import Swal from 'sweetalert2';
 
 const ClassCard = ({ classCrad }) => {
     const { className,classImage,classPrice,classSeats,enrolled,_id } = classCrad;
-    const { user } = useContext(AuthContext);
-    const [, refetch] = UseCart();
-    const navigate = useNavigate();
-    const location = useLocation();
+    // const { user } = useContext(AuthContext);
+    // const [, refetch] = UseCart();
+    // const navigate = useNavigate();
+    // const location = useLocation();
 
-    const handleAddClass = classCrad => {
-        console.log(classCrad)
-        if (user && user.email) {
-            const classItem = { classId: _id, className, classImage,classPrice,  email: user.email }
-            fetch('http://localhost:5000/addclass', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(classItem)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.insertedId) {
-                        refetch(); 
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Class added on the cart.',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    }
-                })
-        }
-        else {
-            Swal.fire({
-                title: 'Please login to add the Class',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Login now!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate('/login', { state: { from: location } })
-                }
-            })
-        }
-    }
+    // const handleAddClass = classCrad => {
+    //     console.log(classCrad)
+    //     if (user && user.email) {
+    //         const classItem = { classId: _id, className, classImage,classPrice,  email: user.email }
+    //         fetch('http://localhost:5000/addclass', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'content-type': 'application/json'
+    //             },
+    //             body: JSON.stringify(classItem)
+    //         })
+    //             .then(res => res.json())
+    //             .then(data => {
+    //                 if (data.insertedId) {
+    //                     refetch(); 
+    //                     Swal.fire({
+    //                         position: 'top-end',
+    //                         icon: 'success',
+    //                         title: 'Class added on the cart.',
+    //                         showConfirmButton: false,
+    //                         timer: 1500
+    //                     })
+    //                 }
+    //             })
+    //     }
+    //     else {
+    //         Swal.fire({
+    //             title: 'Please login to add the Class',
+    //             icon: 'warning',
+    //             showCancelButton: true,
+    //             confirmButtonColor: '#3085d6',
+    //             cancelButtonColor: '#d33',
+    //             confirmButtonText: 'Login now!'
+    //         }).then((result) => {
+    //             if (result.isConfirmed) {
+    //                 navigate('/login', { state: { from: location } })
+    //             }
+    //         })
+    //     }
+    // }
 
     return (
         <div>
@@ -62,9 +62,7 @@ const ClassCard = ({ classCrad }) => {
                     <h2 className="card-title">Student-Enrooled: {enrolled}</h2>
                     <p>Price: {classPrice}</p>
                     <p> Available Seats: {classSeats}</p>
-                    <div className="card-actions justify-end">
-                        <button className="btn btn-primary" onClick={()=>handleAddClass(classCrad)}>Add class</button>
-                    </div>
+                   
                 </div>
             </div>
         </div>
